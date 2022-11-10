@@ -18,7 +18,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.ParseException;
@@ -80,8 +79,8 @@ public class AdminService
         BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType(multipartFile.getContentType()).build();
         storage.create(blobInfo, Files.readAllBytes(filePath));
         Blob blob = storage.create(blobInfo, Files.readAllBytes(filePath));
-        System.out.println(String.format(DOWNLOAD_URL, URLEncoder.encode(objectName, StandardCharsets.UTF_8)));
-        return String.format(DOWNLOAD_URL, URLEncoder.encode(objectName, StandardCharsets.UTF_8));
+        System.out.println(String.format(DOWNLOAD_URL, URLEncoder.encode(objectName)));
+        return String.format(DOWNLOAD_URL, URLEncoder.encode(objectName));
     }
     // To add courses
     public String addCourse(CourseRequest courseRequest) throws IOException
